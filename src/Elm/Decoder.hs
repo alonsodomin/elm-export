@@ -39,7 +39,7 @@ instance HasDecoderRef ElmDatatype where
 instance HasDecoder ElmConstructor where
   render (NamedConstructor name value) = do
     dv <- render value
-    return $ "Json.Decode.succeed" <+> stext name  -- <$$> indent 4 dv
+    return $ "Json.Decode.succeed" <+> stext name  <$$> indent 4 (pipe <+> dv)
   render (RecordConstructor name value) = do
     dv <- render value
     return $ "Json.Decode.succeed" <+> stext name <$$> indent 4 dv

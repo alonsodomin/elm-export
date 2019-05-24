@@ -48,6 +48,12 @@ emptyline = nest minBound linebreak
 (<$+$>) :: Doc -> Doc -> Doc
 l <$+$> r = l <> emptyline <$$> r
 
+pipe :: Doc
+pipe = "|>"
+
+(|>) :: Doc -> Doc -> Doc
+l |> r = l <+> pipe <+> r
+
 --
 type RenderM = RWS Options (Set Text -- The set of required imports
                             , [Text] -- Generated declarations
